@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>tips for using OpenCV with Anaconda Python, Xcode</title>
+
+</head>
+<body>
+<h2>tips for using OpenCV with Anaconda Python, Xcode</h2>
+
+<blockquote><p>OpenCV is sooo buggy... Everytime I came across opencv, I would spend a hell lot of time setting up the environment. Whether working with python, C++, Xcode....
+OK now I finally got a chance to write some tips down, HOPE THIS WOULD HELP! *3*</p></blockquote>
+
+<hr />
+
+<p><strong>Mac OS Yosemite 10.10.2 || Xcode 6.1.1  || opencv 2.4.10.1</strong></p>
+
+<p>Opencv can be got from</p>
+
+<ul>
+<li>cmake</li>
+<li>homebrew install opencv</li>
+<li>conda install opencv</li>
+</ul>
+
+
+<p>I have the first 2 versions installed. (I deleted the conda version. But not sure how to completely romove the cmake version.)</p>
+
+<hr />
+
+<h2>1. If you want to install opencv using homebrew:</h2>
+
+<p><strong>homebrew requires linking numpy before installing opencv, but it can't link numpy because of some access error (Permission denied).</strong></p>
+
+<h4>so...add access by the command "change owner"</h4>
+
+<p><span style="color:hotpink"><strong><em>sudo chown -R chenge /usr/local</em></strong></span></p>
+
+<p><img src="brew_install.png" height="200" width="500" alt="add acess" /></p>
+
+<h4>Now you should be able to "<span style="color:hotpink">brew link numpy</span>", and then you can go ahead and "<span style="color:hotpink">brew install opencv</span>".</h4>
+
+<pre><code>172-16-208-183:1.9.1 Chenge$ brew link numpy
+Linking /usr/local/Cellar/numpy/1.9.1... 391 symlinks created
+172-16-208-183:1.9.1 Chenge$ brew install opencv
+==&gt; Installing opencv from homebrew/homebrew-science
+==&gt; Downloading https://downloads.sf.net/project/machomebrew/Bottles/science/ope
+######################################################################## 100.0%
+==&gt; Pouring opencv-2.4.10.1.yosemite.bottle.tar.gz
+Error: The `brew link` step did not complete successfully
+The formula built, but is not symlinked into /usr/local
+Could not symlink share/OpenCV/OpenCVConfig-version.cmake
+Target /usr/local/share/OpenCV/OpenCVConfig-version.cmake
+already exists. You may want to remove it:
+  rm '/usr/local/share/OpenCV/OpenCVConfig-version.cmake'
+
+To force the link and overwrite all conflicting files:
+  brew link --overwrite opencv
+
+To list all files that would be deleted:
+  brew link --overwrite --dry-run opencv
+
+Possible conflicting files are:
+//。。。。a lot of files here//
+==&gt; Summary
+🍺  /usr/local/Cellar/opencv/2.4.10.1: 219 files,  39M
+172-16-208-183:1.9.1 Chenge$ rm /usr/local/share/OpenCV/OpenCVConfig-version.cmake
+172-16-208-183:1.9.1 Chenge$ brew link --overwrite opencv
+Linking /usr/local/Cellar/opencv/2.4.10.1... 93 symlinks created
+172-16-208-183:1.9.1 Chenge$ brew link --overwrite --dry-run opencv
+Warning: Already linked: /usr/local/Cellar/opencv/2.4.10.1
+To relink: brew unlink opencv &amp;&amp; brew link opencv
+172-16-208-183:1.9.1 Chenge$ 
+</code></pre>
+
+<p><strong> There are some comflicting files because I already had the cmake version opencv installed. But I decided not to delete that and keep both. </strong></p>
+
+<h2>2. if you want to install opencv using Anaconda</h2>
+
+<p><span style="color:hotpink"><strong>conda install -c https://conda.binstar.org/jjhelmus opencv</strong></span></p>
+
+<p><img src="reinstall_cv_ana.png" height="300" alt="reinstall opencv anaconda" /></p>
+
+<p><strong> Anaconda Python works fine with the conda version opencv.But I uninstalled Anaconda opencv:</strong>
+<span style="color:hotpink">conda uninstall opencv</span> ,
+<strong>because I chose to <em>link anaconda python with the brewed opencv instead</em>:</strong></p>
+
+<ul>
+<li>cd /Users/Chenge/anaconda/lib/python2.7/site-packages/</li>
+<li>ln -s /usr/local/Cellar/opencv/2.4.10.1/lib/python2.7/site-packages/cv.py cv.py</li>
+<li><p>ln -s /usr/local/Cellar/opencv/2.4.10.1/lib/python2.7/site-packages/cv2.so cv2.so</p>
+
+<p>  <code>BTW, anoconda python path:</code>
+/Users/Chenge/anaconda/lib/python2.7/site-packages/<br/>
+<strong>there are packages like</strong>: <em>/Users/Chenge/anaconda/lib/python2.7/site-packages/numpy</em> )</p></li>
+</ul>
+
+
+<hr />
+
+<h2>3. Linking opencv with Xcode</h2>
+
+<h3>choice 1: linking the brewed version:</h3>
+
+<ul>
+<li>Under "Build Phases", "Link Binary With Libraries"</li>
+<li>Under "Build Settings", "Library Search Paths" (Set to /usr/local/Cellar/opencv/2.4.10.1/lib)</li>
+<li>Unser "Build Settings", "Header Search Paths" (Set to /usr/local/Cellar/opencv/2.4.10.1/include)</li>
+<li>Last but not least, <strong>you should add whatever dylib files you need to the project</strong> by <em>Add Files to...</em></li>
+</ul>
+
+
+<h3>choice 2: linking the cmake version:</h3>
+
+<ul>
+<li>Under "Build Phases", "Link Binary With Libraries"</li>
+<li>Under "Build Settings", "Library Search Paths" (Set to /usr/local/opt/opencv/lib)</li>
+<li>Unser "Build Settings", "Header Search Paths" (Set to /usr/local/opt/opencv/include/)</li>
+<li><p>Last but not least, <strong>you should add whatever dylib files you need to the project</strong> by <em>Add Files to...</em></p>
+
+<p>  <code>BTW, cmake version of opencv is at</code>:
+  /usr/local/opt/opencv/include/opencv
+  /usr/local/opt/opencv/include/opencv2<br/>
+  /usr/local/opt/opencv/lib</p></li>
+</ul>
+
+
+<p><span style="color:blue"><strong>If you don't know which version you should use, you can add them both...but this is not a neat idea.</strong></span></p>
+
+<p><strong>This might be helpful</strong>: <a href="https://syncknowledge.wordpress.com/2014/11/02/using-opencv-2-4-9-with-xcode-6-1-on-os-x-yosemite/">https://syncknowledge.wordpress.com/2014/11/02/using-opencv-2-4-9-with-xcode-6-1-on-os-x-yosemite/</a></p>
+
+<h2>Now you should be able to:</h2>
+
+<ul>
+<li>run Anaconda python with Anaconda opencv or homebrewed opencv.</li>
+<li>use cmake version of opencv or homebrewed opencv in Xcode.</li>
+<li>have no idea what I have just jabbered, still stuck somewhere nowhere? <strong>Well...good luck! Or should I say, <em>google</em> with luck~! :D </strong></li>
+</ul>
+
+
+<hr />
+
+<p><a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#108;&#x69;&#99;&#104;&#101;&#110;&#x67;&#x65;&#x30;&#x32;&#x32;&#x33;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x6c;&#105;&#99;&#x68;&#101;&#110;&#103;&#101;&#x30;&#50;&#x32;&#x33;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a></p>
+</body>
+</html>
