@@ -24,7 +24,7 @@ I have the first 2 versions installed. (I deleted the conda version. But not sur
 #### so...add access by the command "change owner"
 <span style="color:hotpink">**_sudo chown -R chenge /usr/local_**</span>
 
-![add acess](/Users/Chenge/Desktop/brew_install.png =500x200)
+![add acess](brew_install.png =500x200)
 
 #### Now you should be able to "<span style="color:hotpink">brew link numpy</span>", and then you can go ahead and "<span style="color:hotpink">brew install opencv</span>".
 
@@ -68,7 +68,7 @@ I have the first 2 versions installed. (I deleted the conda version. But not sur
 
 <span style="color:hotpink">**conda install -c https://conda.binstar.org/jjhelmus opencv**</span>
 
-![reinstall opencv anaconda]( /Users/Chenge/Desktop/reinstall_cv_ana.png =x300)
+![reinstall opencv anaconda](reinstall_cv_ana.png =x300)
 
 
 ** Anaconda Python works fine with the conda version opencv.But I uninstalled Anaconda opencv:**
