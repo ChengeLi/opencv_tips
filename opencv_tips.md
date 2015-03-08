@@ -117,9 +117,7 @@ I have the first 2 versions installed. (I deleted the conda version. But not sur
 
 - run Anaconda python with Anaconda opencv or homebrewed opencv.   
 - use cmake version of opencv or homebrewed opencv in Xcode.  
-- have no idea what I have just jabbered, still stuck somewhere nowhere? 
-
-** Well...good luck! Or should I say, _google_ with luck~! :D **
+- have no idea what I have just jabbered, still stuck somewhere nowhere? **Well...good luck! Or should I say, _google_ with luck~! :D**
 
 *** 
 <lichenge0223@gmail.com>
